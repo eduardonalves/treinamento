@@ -2,13 +2,15 @@
 
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
-
+	
 	protected $_docRoot;
 	
 	protected function _initPath()
 	{
+		
 		$this->_docRoot = realpath(APPLICATION_PATH . '/../');
 		Zend_Registry::set('docRoot', $this->_docRoot);
+		
 	}
 
 	protected function _initLoaderResource()
@@ -29,13 +31,19 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		));*/
 		require_once "Zend/Loader/Autoloader.php";
 		$autoloader = Zend_Loader_Autoloader::getInstance( );
+		
 		$autoloader->setFallbackAutoloader( true );	
+		
 		
 	}
 
 	protected function _initLog()
 	{
+		ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
 		$writer = new Zend_Log_Writer_Stream(APPLICATION_PATH . '/../data/logs/error.log');
+		
 		return new Zend_Log($writer);
 	}
 
@@ -46,10 +54,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	}
 	
 	public function _initDbAdapter() {
+		
 		$resource = $this->getPluginResource('multidb');
-        $resource->init();
-        $db1 = $resource->getDb('db1');
-        Zend_Registry::set( "db1", $db1 );
+    $resource->init();
+    $db1 = $resource->getDb('db1');
+    Zend_Registry::set( "db1", $db1 );
 		
 	}
 

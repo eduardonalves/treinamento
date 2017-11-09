@@ -36,18 +36,22 @@ class Application
 
 	public static function run()
 	{
+		
 		self::bootstrap()->run();
 	}
 
 	private static function _getEnv()
 	{
+		
 		return self::$env ? : APPLICATION_ENV;
 	}
 
 	private static function _getConfig()
 	{
 		$env = self::_getEnv();
+		
 		$config = new Zend_Config_Ini(APPLICATION_PATH . '/configs/application.ini', $env, true);
+		
 		return $config->toArray();
 	}
 

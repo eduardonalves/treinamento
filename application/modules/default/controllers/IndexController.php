@@ -6,7 +6,7 @@ class IndexController extends Zend_Controller_Action
 	
 	public function indexAction()
 	{
-		
+	
 		//require_once '../forms/Formligacoes.php';	
 		//$formAddTerminal = new Application_Form_Ligacao();
 		
