@@ -1,0 +1,50 @@
+<h1>
+  Lista de Terminais
+</h1>
+<br>
+<button class="btn btn-primary load-page" data-url="http://treinamento-eduardonalves367336.codeanyapp.com/treinamento/public/terminal/add">
+  Novo Registro
+</button>
+<br>
+<br>
+<table class="table table-striped">
+  <thead >
+    <tr>
+      <th scope="col">Terminal</th>
+      <th scope="col">Data Início</th>
+      <th scope="col">Data Fim</th>
+			<th scope="col">UF</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+<?php
+
+foreach ($this->paginator as $item):
+?>
+  
+    <tr>
+      <td  ><?php echo $item['terminal']; ?></td>
+      <td><?php echo $item['data_inicio']; ?></td>
+      <td><?php echo $item['data_fim']; ?></td>
+			 <td><?php echo $item['uf']; ?></td>
+			<td>
+				<a href="#" class="load-page" data-url="http://treinamento-eduardonalves367336.codeanyapp.com/treinamento/public/terminal/view/id/<?php echo $item['id']; ?>">Ver</a> /
+				<a href="#" class="load-page" data-url="http://treinamento-eduardonalves367336.codeanyapp.com/treinamento/public/terminal/edit/id/<?php echo $item['id']; ?>">Editar</a>/
+				<a href="#" class="deleteRegistro" data-url="http://treinamento-eduardonalves367336.codeanyapp.com/treinamento/public/terminal/delete/id/<?php echo $item['id']; ?>">Deletar</a></td>
+    </tr>
+  
+<?php
+endforeach;
+?>
+  </tbody>
+</table>
+<?php 
+ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
+//echo $this->paginationControl($this->paginator, 'Sliding', 'pagination.phtml'); 
+?>
+<?php echo $this->paginationControl($this->paginator,
+                                    'Sliding',
+                                    'pagination.phtml'); ?>

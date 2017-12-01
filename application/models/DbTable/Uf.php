@@ -1,5 +1,5 @@
 <?php
-class Application_Model_DbTable_Ligacao extends Zend_Db_Table_Abstract
+class Application_Model_DbTable_Uf extends Zend_Db_Table_Abstract
 {
 	protected $_db;
 	protected $_name;
@@ -11,7 +11,7 @@ class Application_Model_DbTable_Ligacao extends Zend_Db_Table_Abstract
 	public function init(){
 	 	$this->_db		= Zend_Registry::get("db1");
 		$this->_schema	= "treinamento";
-		$this->_name	= 'ligacoes';
+		$this->_name	= 'ufs';
 		$this->_primary	= 'id';
 		$this->_schemaName	= $this->_schema . '.' . $this->_name;	
 	}
@@ -39,23 +39,25 @@ class Application_Model_DbTable_Ligacao extends Zend_Db_Table_Abstract
 	{
 		$this->_select = $this->_db->select( );
 		
-		$this->_select->from( array( "lig" => "ligacoes" ),
-					   array( "lig.id","lig.terminal","lig.data_inicio","lig.data_fim") )
-			->joinLeft( array( "u" => "ufs" ), "u.id = lig.uf_id", array("u.uf", "u.id as uf_id"));
+		$this->_select->from( array( "u" => "ufs" ),
+					   array( "u.id","u.uf") );
 		
 		if(isset($params['id']))
 		{
 			if($params['id']!='')
 			{
-				$this->_select->where("lig.id = ?", $params['id']);
+				$this->_select->where("u.id = ?", $params['id']);
 			}
 		}
 		
-		$this->_select->order('lig.id DESC');
+		$this->_select->order('u.id DESC');
   	
 		if(isset($params['row']))
 		{
 			return $this->_db->fetchRow( $this->_select );
+		}else if(isset($params['pairs']))
+		{
+			return $this->_db->fetchPairs( $this->_select );
 		}else if(isset($params['page']))
 		{
 			$paginator = Zend_Paginator::factory($this->_select);

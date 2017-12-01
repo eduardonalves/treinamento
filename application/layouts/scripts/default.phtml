@@ -11,14 +11,14 @@
 	<?php echo $this->headTitle(); ?>
 	<?php echo $this->headLink(); ?>
 
-    <title>Starter Template for Bootstrap</title>
+    <title>Treinamento Open Labs</title>
 	
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	 <link href="css/tether.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="css/starter-template.css" rel="stylesheet">
-    
+    <link href="css/estilo.css" rel="stylesheet">
     
     <script src="js/jquery.min.js" ></script>
     <script src="js/tether.min.js" ></script>
@@ -47,7 +47,7 @@
             <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cadastros</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
              <!-- <a class="dropdown-item" href="#">Clientes</a>-->
-              <a class="dropdown-item" href="#">Terminais</a>
+              <a class="dropdown-item load-page" href="#" data-url="http://treinamento-eduardonalves367336.codeanyapp.com/treinamento/public/terminal/index">Terminais</a>
             </div>
           </li>
         </ul>
@@ -68,7 +68,17 @@
 		  <?php echo $this->layout()->content; ?> 
 		  <?php echo $this->inlineScript(); ?>
 		</div> 
-		
+		<div class="modal js-loading-bar">
+		 <div class="modal-dialog">
+			 <div class="modal-content">
+				 <div class="modal-body">
+					 <div class="progress progress-popup">
+						<div class="progress-bar"></div>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+		</div>		
 		
 
     </div><!-- /.container -->

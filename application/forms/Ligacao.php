@@ -63,18 +63,26 @@ class Application_Form_Ligacao extends Zend_Form
 		    )
 	   	);
 	   	
-	   	$this->addElement (
-			'select','cliente_id',
-		    array(
-		    	'size'=>'50',
-				'style' => 'width=220',
-		    	'required' => false,
-		    	'validators' => array(
-    				array('NotEmpty', true)
-    			)
-				
-		    )
-	   	);
+		$this->addElement (
+		'select','cliente_id',
+			array(
+				'size'=>'50',
+			'style' => 'width=220',
+				'required' => false,
+				'validators' => array(
+					array('NotEmpty', true)
+				)
+
+			)
+		);
+			
+			
+		$this->addElement( 'select', 'uf_id',
+			 array( 'label'	   => 'UF',
+					'style'	   => 'width:121px'	
+					)
+		);
+						 
 	   //	$this->cliente_id->getValidator('NotEmpty')->setMessages(
         //	array(Zend_Validate_NotEmpty::IS_EMPTY => 'Favor preencher o campo!'));
 

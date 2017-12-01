@@ -1,0 +1,22 @@
+<form action="<?=$this->escape($this->element->getAction());?>" 
+			method="<?=$this->escape($this->element->getMethod());?>" 
+			name="<?=$this->escape($this->element->getName());?>"
+			id="<?=$this->escape($this->element->getName());?>"
+			class="editRegistro formData"
+			data-url="terminal/salvar"
+			>
+    <fieldset>
+        <legend>Formulário de Edição:</legend>
+				<?=$this->element->id;?>
+        <br/>
+        <?=$this->element->terminal;?>
+        <br/>
+        <?=$this->element->data_inicio;?>
+        <br/>
+         <?=$this->element->data_fim;?>
+         <br/>
+					<?=$this->element->uf_id;?>
+         <br/>
+         <button type="submit" class="btn btn-primary">Salvar</button>
+    </fieldset>	
+ </form>   
